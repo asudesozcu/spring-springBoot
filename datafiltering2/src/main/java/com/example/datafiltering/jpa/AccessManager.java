@@ -4,6 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -66,7 +69,6 @@ public class AccessManager {
 		return repository.findByDonemBasiIsinBakiyeBetween(lowerbound, upperbound);
 	}
 
-	//
 	public List<Data> getEntryByBetweencalenderYearMonth(@PathVariable Date start_date, @PathVariable Date end_date) {
 		return repository.findByCalenderYearMonthBetween(start_date, end_date);
 	}
@@ -81,6 +83,11 @@ public class AccessManager {
 
 	public List<Data> getEntryByCalenderYearMonth(@PathVariable Date date) {
 		return repository.findByCalenderYearMonth(date);
+	}
+
+	public Page<Data> getPagedData(int page, int size) {
+		Pageable pageable = PageRequest.of(page, size);
+		return repository.findAll(pageable);
 	}
 
 }

@@ -37,12 +37,6 @@ public class Data {
 		this.donemSonuIsinBakiye = donemSonuIsinBakiye;
 	}
 
-	/*
-	 * calender_year_month_text,donem_basi_isin_bakiye,donem_sonu_isin_bakiye,
-	 * fund_type,sec_type,id
-	 * 
-	 */
-
 	// Getters and setters
 	public Long getId() {
 		return id;
